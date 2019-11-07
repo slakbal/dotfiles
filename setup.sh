@@ -29,16 +29,45 @@ sudo -v
 # This is a default directory for macOS user accounts but doesn't comes pre-installed
 #mkdir $HOME/Sites
 
+
+DIRECTORY="$HOME/.oh-my-zsh"
+if [ ! -d "$DIRECTORY" ]; then
+    echo "Installing oh-my-zsh in ${DIRECTORY}..."
+    git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+else
+    echo "Updating ${DIRECTORY}..."
+    cd $DIRECTORY
+    git pull origin master
+fi
+
+
+#install custome plugins
+DIRECTORY="$HOME/.dotfiles/plugins/zsh-syntax-highlighting"
+if [ ! -d "$DIRECTORY" ]; then
+    echo "Installing zsh-syntax-highlighting files in ${DIRECTORY}..."
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.dotfiles/plugins/zsh-syntax-highlighting
+else
+    echo "Updating ${DIRECTORY}..."
+    cd $DIRECTORY
+    git pull origin master
+fi
+
+DIRECTORY="$HOME/.dotfiles/plugins/zsh-autosuggestions"
+if [ ! -d "$DIRECTORY" ]; then
+    echo "Installing zsh-autosuggestions files in ${DIRECTORY}..."
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.dotfiles/plugins/zsh-autosuggestions
+else
+    echo "Updating ${DIRECTORY}..."
+    cd $DIRECTORY
+    git pull origin master
+fi
+
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 rm -rf $HOME/.zshrc
-echo "Removed .zshrc"
+echo "Removed old .zshrc link or file"
 
 ln -s $HOME/.dotfiles/.zsh_custom $HOME/.zshrc
-echo "Symlinked to ~/.zskrc"
+echo "Symlinked ~/.zskrc to ~/.dotfiles/.zsh_custom"
 
 # Symlink the Mackup config file to the home directory
 #ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
-
-# Set macOS preferences
-# We will run this last because this will reload the shell
-source $HOME/.zshrc
