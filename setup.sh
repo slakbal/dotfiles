@@ -31,11 +31,14 @@ sudo -v
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 rm -rf $HOME/.zshrc
+echo "Removed .zshrc"
+
 ln -s $HOME/.dotfiles/.zsh_custom $HOME/.zshrc
+echo "Symlinked to ~/.zskrc"
 
 # Symlink the Mackup config file to the home directory
 #ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 
 # Set macOS preferences
 # We will run this last because this will reload the shell
-source .zsh_custom
+source $HOME/.zshrc
