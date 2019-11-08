@@ -29,7 +29,7 @@ alias watch="npm run watch"
 
 # Git
 alias commit="git add . && git commit -m"
-alias push="git add . && git commit --allow-empty-message -m '' && git push origin master"
+alias save="git add . && git commit --allow-empty-message -m '' && git push"
 alias amend="git commit --amend --no-edit"
 alias amendall="git add . && amend"
 alias wip="commit wip"
