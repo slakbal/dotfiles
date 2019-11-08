@@ -18,6 +18,7 @@ alias siv="sites && cd akademie/"
 # Laravel
 alias a="php artisan"
 alias fresh="php artisan migrate:fresh --seed"
+alias cu="composer update"
 
 # PHP
 alias cfresh="rm -rf vendor/ composer.lock && composer i"
@@ -28,7 +29,7 @@ alias watch="npm run watch"
 
 # Git
 alias commit="git add . && git commit -m"
-alias gcommit="git add . && git commit"
+alias push="git add . && git commit --allow-empty-message -m '' && git push origin master"
 alias amend="git commit --amend --no-edit"
 alias amendall="git add . && amend"
 alias wip="commit wip"

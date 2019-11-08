@@ -4,6 +4,26 @@ echo "Setting up your environment..."
 
 sudo -v
 
+BREW="$HOME/linuxbrew/.linuxbrew/bin"
+
+if [ ! -d "$BREW" ]; then
+
+    echo "Installing brew in ${BREW}..."
+    sudo apt-get install build-essential curl file git
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+    test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+    echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+
+else
+
+    echo "Updating ${BREW}..."
+    brew update
+
+fi
+
+
 ## Check for Homebrew and install if we don't have it
 #if test ! $(which brew); then
 #  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
