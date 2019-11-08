@@ -7,7 +7,7 @@ alias c="clear"
 
 # Editors
 alias zsh="sudo nano $HOME/.zshrc"
-alias z="sudo nano $HOME/.bashrc"
+alias bsh="sudo nano $HOME/.bashrc"
 
 # Directories
 alias dotfiles="cd $DOTFILES"
