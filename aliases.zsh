@@ -1,3 +1,7 @@
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
 # Shortcuts - pbcopy is for mac
 alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
 alias reloadcli="source $HOME/.zshrc"

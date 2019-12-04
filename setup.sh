@@ -5,43 +5,60 @@ echo "Setting up your environment..."
 sudo -v
 
 ## Update Repos
-#sudo apt -y update
+sudo apt -y update
+
 
 ## Install Basic Stuff
-#sudo apt -y install curl git unzip
+sudo apt -y install curl git unzip build-essential
+
+
+
+####################
+## NPM
+####################
+
+sudo apt -y install npm
+
+
 
 ####################
 ## PHP
 ####################
 
 ##Install php
-#sudo apt install software-properties-common
-#sudo add-apt-repository ppa:ondrej/PHP
-#sudo apt -y install php7.3-fpm
-#sudo apt -y install php7.3-common php7.3-mysql php7.3-xml php7.3-xmlrpc php7.3-curl php7.3-gd php7.3-imagick php7.3-cli php7.3-dev php7.3-imap php7.3-mbstring php7.3-opcache php7.3-soap php7.3-zip php7.3-intl
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:ondrej/PHP
+sudo apt -y install php7.3-fpm
+sudo apt -y install php7.3-common php7.3-mysql php7.3-xml php7.3-xmlrpc php7.3-curl php7.3-gd php7.3-imagick php7.3-cli php7.3-dev php7.3-imap php7.3-mbstring php7.3-opcache php7.3-soap php7.3-zip php7.3-intl
+
+
 
 ####################
 ## COMPOSER
 ####################
 
 ##Install composer
-#cd ~
-#curl -sS https://getcomposer.org/installer -o composer-setup.php
-#sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+cd ~
+curl -sS https://getcomposer.org/installer -o composer-setup.php
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+
 
 ####################
 ## NGINX
 ####################
 
 ##Install Nginx
-#sudo apt -y install nginx
+sudo apt -y install nginx
+
+
 
 ####################
 ## REDIS
 ####################
 
 ##Install Redis
-#sudo apt -y install redis-server
+sudo apt -y install redis-server
 
 ## Config TODO
 # sudo nano /etc/redis/redis.conf
@@ -60,28 +77,7 @@ sudo -v
 # sudo systemctl restart redis.service
 # sudo systemctl status redis
 
-####################
-## COMPOSER
-####################
 
-## Install global Composer packages
-#sudo apt -y install network-manager libnss3-tools jq xsel
-#composer global require laravel/installer cpriego/valet-linux
-#echo "export PATH=$PATH:$HOME/.config/composer/vendor/bin" >> ~/.bashrc
-#source ~/.bashrc
-
-# Create a Sites directory
-#DIRECTORY="$HOME/Code"
-#if [ ! -d "$DIRECTORY" ]; then
-#    echo "Setup Code Folder in ${DIRECTORY}..."
-#    mkdir $DIRECTORY
-#fi
-
-#Setup Valet
-#cd ~/Code
-#valet install
-#valet domain app
-#cd ~
 
 ####################
 ## ZSH
@@ -102,9 +98,19 @@ if [ ! -d "$DIRECTORY" ]; then
     #sudo chsh -s /bin/bash
 else
     echo "Updating ${DIRECTORY}..."
-    cd $DIRECTORY
+    cd ~/.oh-my-zsh
     git pull origin master
     # upgrade_oh_my_zsh
+fi
+
+DIRECTORY="$HOME/.dotfiles"
+if [ ! -d "$DIRECTORY" ]; then
+    mkdir ~/.dotfiles
+fi
+
+DIRECTORY="$HOME/.dotfiles/plugins"
+if [ ! -d "$DIRECTORY" ]; then
+    mkdir ~/.dotfiles/plugins
 fi
 
 #install custome plugins
@@ -112,10 +118,12 @@ DIRECTORY="$HOME/.dotfiles/plugins/zsh-syntax-highlighting"
 if [ ! -d "$DIRECTORY" ]; then
     echo "Installing zsh-syntax-highlighting files in ${DIRECTORY}..."
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.dotfiles/plugins/zsh-syntax-highlighting --depth 1
-    echo "source $DIRECTORY/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
+    
+    #this is already in the .zsh_custom
+    #echo "source $DIRECTORY/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
 else
     echo "Updating ${DIRECTORY}..."
-    cd $DIRECTORY
+    cd ~/.dotfiles/plugins/zsh-syntax-highlighting
     git pull origin master
 fi
 
@@ -123,26 +131,71 @@ DIRECTORY="$HOME/.dotfiles/plugins/zsh-autosuggestions"
 if [ ! -d "$DIRECTORY" ]; then
     echo "Installing zsh-autosuggestions files in ${DIRECTORY}..."
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.dotfiles/plugins/zsh-autosuggestions --depth 1
-    echo "source $DIRECTORY/zsh-autosuggestions.zsh" >> "$HOME/.zshrc"
+    
+    #this is already in the .zsh_custom
+    #echo "source $DIRECTORY/zsh-autosuggestions.zsh" >> "$HOME/.zshrc"
 else
     echo "Updating ${DIRECTORY}..."
-    cd $DIRECTORY
+    cd ~/.dotfiles/plugins/zsh-autosuggestions
     git pull origin master
 fi
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
-#rm -rf $HOME/.zshrc
-#echo "Removed old .zshrc link or file"
+rm -rf $HOME/.zshrc
+echo "Removed old .zshrc link or file"
 
-#ln -s $HOME/.dotfiles/.zsh_custom $HOME/.zshrc
-#echo "Symlinked ~/.zskrc to ~/.dotfiles/.zsh_custom"
+ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
+echo "Symlinked ~/.zshrc to ~/dotfiles/.zshrc"
 
-# Symlink the Mackup config file to the home directory
-#ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
+cd ~
+
 
 
 ####################
-## MYSQL
+## MYSQL - https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
 ####################
 
-#sudo apt -y install mysql-server
+FILE="/usr/bin/mysql"
+if [ ! "$FILE" ]; then
+    sudo apt -y install mysql-server
+    sudo apt -y install mysql-client
+    sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';FLUSH PRIVILEGES;"
+    sudo mysql -u root -p password -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';GRANT ALL PRIVILEGES ON *.* TO 'homestead'@'localhost' WITH GRANT OPTION;"
+fi
+
+
+
+
+####################
+## FINALISE
+####################
+
+sudo apt -y upgrade
+sudo apt -y autoremove
+
+
+
+
+
+####################
+## VALET
+####################
+
+## Install global Composer packages
+sudo apt -y install network-manager libnss3-tools jq xsel
+composer global require laravel/installer cpriego/valet-linux
+sudo echo "export PATH=$PATH:$HOME/.config/composer/vendor/bin" >> ~/.bashrc
+
+# Create a Sites directory
+DIRECTORY="$HOME/Code"
+if [ ! -d "$DIRECTORY" ]; then
+    echo "Setup Code Folder in ${DIRECTORY}..."
+    mkdir $DIRECTORY
+fi
+
+#Setup Valet
+cd ~/Code
+valet install
+valet domain app
+cd ~
+
