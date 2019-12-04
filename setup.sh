@@ -4,31 +4,24 @@ echo "Setting up your environment..."
 
 sudo -v
 
-BREW="$HOME/linuxbrew/.linuxbrew/bin"
+## Update Repos
+#sudo apt -y update
 
-if [ ! -d "$BREW" ]; then
+## Install Basic Stuff
+#sudo apt -y install curl git unzip
 
-    #echo "Updating ${BREW}..."
-    #brew update
+##Install php
+#sudo apt install software-properties-common
+#sudo add-apt-repository ppa:ondrej/PHP
+#sudo apt -y install php7.3-fpm
+#sudo apt -y install php-cli php-mbstring 
+echo "************ PHP installed *************"
+#php -v
 
-    ## Remove Brew
-    brew remove --force $(brew list) --ignore-dependencies
-    brew cleanup
-    brew cask --remove $(brew cask list)
-    rm -rfd /home/linuxbrew
-
-#else
-
- #   echo "Installing brew in ${BREW}..."
- #   sudo apt-get install build-essential curl file git
- #   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
- #   test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
- #   test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
- #   test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
- #   echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
-
-fi
-
+##Install composer
+cd ~
+curl -sS https://getcomposer.org/installer -o composer-setup.php
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 ## Check for Homebrew and install if we don't have it
 #if test ! $(which brew); then
@@ -55,7 +48,7 @@ fi
 
 ## Install Laravel Valet
 #$HOME/.composer/vendor/bin/valet install
-composer global require cpriego/valet-linux
+#composer global require cpriego/valet-linux
 
 # Create a Sites directory
 #mkdir $HOME/Code
@@ -69,44 +62,44 @@ fi
 
 
 
-DIRECTORY="$HOME/.oh-my-zsh"
-if [ ! -d "$DIRECTORY" ]; then
-    echo "Installing oh-my-zsh in ${DIRECTORY}..."
-    git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-else
-    echo "Updating ${DIRECTORY}..."
-    cd $DIRECTORY
-    git pull origin master
-fi
+#DIRECTORY="$HOME/.oh-my-zsh"
+#if [ ! -d "$DIRECTORY" ]; then
+#    echo "Installing oh-my-zsh in ${DIRECTORY}..."
+#    git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+#else
+#    echo "Updating ${DIRECTORY}..."
+#    cd $DIRECTORY
+#    git pull origin master
+#fi
 
 
 #install custome plugins
-DIRECTORY="$HOME/.dotfiles/plugins/zsh-syntax-highlighting"
-if [ ! -d "$DIRECTORY" ]; then
-    echo "Installing zsh-syntax-highlighting files in ${DIRECTORY}..."
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.dotfiles/plugins/zsh-syntax-highlighting
-else
-    echo "Updating ${DIRECTORY}..."
-    cd $DIRECTORY
-    git pull origin master
-fi
+#DIRECTORY="$HOME/.dotfiles/plugins/zsh-syntax-highlighting"
+#if [ ! -d "$DIRECTORY" ]; then
+#    echo "Installing zsh-syntax-highlighting files in ${DIRECTORY}..."
+#    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.dotfiles/plugins/zsh-syntax-highlighting
+#else
+#    echo "Updating ${DIRECTORY}..."
+#    cd $DIRECTORY
+#    git pull origin master
+#fi
 
-DIRECTORY="$HOME/.dotfiles/plugins/zsh-autosuggestions"
-if [ ! -d "$DIRECTORY" ]; then
-    echo "Installing zsh-autosuggestions files in ${DIRECTORY}..."
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.dotfiles/plugins/zsh-autosuggestions
-else
-    echo "Updating ${DIRECTORY}..."
-    cd $DIRECTORY
-    git pull origin master
-fi
+#DIRECTORY="$HOME/.dotfiles/plugins/zsh-autosuggestions"
+#if [ ! -d "$DIRECTORY" ]; then
+#    echo "Installing zsh-autosuggestions files in ${DIRECTORY}..."
+#    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.dotfiles/plugins/zsh-autosuggestions
+#else
+#    echo "Updating ${DIRECTORY}..."
+#    cd $DIRECTORY
+#    git pull origin master
+#fi
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
-rm -rf $HOME/.zshrc
-echo "Removed old .zshrc link or file"
+#rm -rf $HOME/.zshrc
+#echo "Removed old .zshrc link or file"
 
-ln -s $HOME/.dotfiles/.zsh_custom $HOME/.zshrc
-echo "Symlinked ~/.zskrc to ~/.dotfiles/.zsh_custom"
+#ln -s $HOME/.dotfiles/.zsh_custom $HOME/.zshrc
+#echo "Symlinked ~/.zskrc to ~/.dotfiles/.zsh_custom"
 
 # Symlink the Mackup config file to the home directory
 #ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
