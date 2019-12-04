@@ -27,14 +27,19 @@ fi
 ## Check for Homebrew and install if we don't have it
 #if test ! $(which brew); then
 #  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+#test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+#test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+#test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+#echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 #fi
 
 ## Update Homebrew recipes
-# brew update
+#brew update
 
 ## Install all our dependencies with bundle (See Brewfile)
 # brew tap homebrew/bundle
-# brew bundle
+brew bundle
 
 ## Install PHP extensions with PECL
 #pecl install memcached imagick
