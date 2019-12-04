@@ -15,6 +15,7 @@ if [ ! -d "$BREW" ]; then
     brew remove --force $(brew list) --ignore-dependencies
     brew cleanup
     brew cask --remove $(brew cask list)
+    rm -rfd /home/linuxbrew
 
 #else
 
