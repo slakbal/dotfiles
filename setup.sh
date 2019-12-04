@@ -8,18 +8,23 @@ BREW="$HOME/linuxbrew/.linuxbrew/bin"
 
 if [ ! -d "$BREW" ]; then
 
-    echo "Updating ${BREW}..."
-    brew update
+    #echo "Updating ${BREW}..."
+    #brew update
 
-else
+    ## Remove Brew
+    brew remove --force $(brew list) --ignore-dependencies
+    brew cleanup
+    brew cask --remove $(brew cask list)
 
-    echo "Installing brew in ${BREW}..."
-    sudo apt-get install build-essential curl file git
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-    test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
-    echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+#else
+
+ #   echo "Installing brew in ${BREW}..."
+ #   sudo apt-get install build-essential curl file git
+ #   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+ #   test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+ #   test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+ #   test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+ #   echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 
 fi
 
@@ -39,7 +44,7 @@ fi
 
 ## Install all our dependencies with bundle (See Brewfile)
 # brew tap homebrew/bundle
-brew bundle
+#brew bundle
 
 ## Install PHP extensions with PECL
 #pecl install memcached imagick
