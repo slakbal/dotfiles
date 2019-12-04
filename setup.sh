@@ -112,7 +112,7 @@ DIRECTORY="$HOME/.dotfiles/plugins/zsh-syntax-highlighting"
 if [ ! -d "$DIRECTORY" ]; then
     echo "Installing zsh-syntax-highlighting files in ${DIRECTORY}..."
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.dotfiles/plugins/zsh-syntax-highlighting --depth 1
-    echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
+    echo "source $DIRECTORY/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
 else
     echo "Updating ${DIRECTORY}..."
     cd $DIRECTORY
@@ -123,7 +123,7 @@ DIRECTORY="$HOME/.dotfiles/plugins/zsh-autosuggestions"
 if [ ! -d "$DIRECTORY" ]; then
     echo "Installing zsh-autosuggestions files in ${DIRECTORY}..."
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.dotfiles/plugins/zsh-autosuggestions --depth 1
-    echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
+    echo "source $DIRECTORY/zsh-autosuggestions.zsh" >> "$HOME/.zshrc"
 else
     echo "Updating ${DIRECTORY}..."
     cd $DIRECTORY
