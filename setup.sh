@@ -8,6 +8,11 @@ BREW="$HOME/linuxbrew/.linuxbrew/bin"
 
 if [ ! -d "$BREW" ]; then
 
+    echo "Updating ${BREW}..."
+    brew update
+
+else
+
     echo "Installing brew in ${BREW}..."
     sudo apt-get install build-essential curl file git
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
@@ -15,11 +20,6 @@ if [ ! -d "$BREW" ]; then
     test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
     echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
-
-else
-
-    echo "Updating ${BREW}..."
-    brew update
 
 fi
 
@@ -49,10 +49,18 @@ brew bundle
 
 ## Install Laravel Valet
 #$HOME/.composer/vendor/bin/valet install
+composer global require cpriego/valet-linux
 
 # Create a Sites directory
-# This is a default directory for macOS user accounts but doesn't comes pre-installed
-#mkdir $HOME/Sites
+#mkdir $HOME/Code
+DIRECTORY="$HOME/Code"
+if [ ! -d "$DIRECTORY" ]; then
+    echo "Setup Code Folder in ${DIRECTORY}..."
+    mkdir $HOME/Code
+fi
+
+#Setup Valet
+
 
 
 DIRECTORY="$HOME/.oh-my-zsh"
