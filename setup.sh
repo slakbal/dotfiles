@@ -14,12 +14,26 @@ sudo apt -y install curl git unzip build-essential
 
 
 ####################
+## NODE
+####################
+FILE="/usr/bin/nodejs"
+if [ ! "$FILE" ]; then
+    sudo apt -y install nodejs
+else
+    sudo npm cache clean -f
+    sudo npm install -g n
+    sudo n stable
+fi
+
+####################
 ## NPM
 ####################
-
-sudo apt -y install npm
-
-
+FILE="/usr/bin/npm"
+if [ ! "$FILE" ]; then
+    sudo apt -y install npm
+else
+    sudo npm install npm@latest -g    
+fi
 
 ####################
 ## PHP
@@ -195,7 +209,7 @@ fi
 
 #Setup Valet
 cd ~/Code
-valet install
 valet domain app
+valet install
 cd ~
 
