@@ -18,12 +18,15 @@ alias dotfiles="cd $DOTFILES"
 alias library="cd $HOME/Library"
 alias sites="cd $HOME/Code"
 alias siv="sites && cd akademie/"
+alias sivnew="sites && cd akademie2020/"
 
 # Laravel
 alias a="php artisan"
 alias fresh="php artisan migrate:fresh --seed"
 alias cu="composer update"
-alias at="./vendor/bin/pest"
+alias s="composer fix-style"
+alias t="./vendor/bin/phpunit"
+alias p="./vendor/bin/pest"
 
 # PHP
 alias cfresh="rm -rf vendor/ composer.lock && composer i"
