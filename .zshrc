@@ -71,13 +71,13 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(zsh-autosuggestions git laravel5)
+#zsh-autosuggestions
+#zsh-syntax-highlighting
 plugins=(
   git
   git-extras
   common-aliases
   laravel5
-  zsh-autosuggestions
-  zsh-syntax-highlighting
   z
 )
 
