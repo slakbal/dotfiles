@@ -23,6 +23,7 @@ alias siv="sites && cd akademie/"
 alias a="php artisan"
 alias fresh="php artisan migrate:fresh --seed"
 alias cu="composer update"
+alias at="./vendor/bin/pest"
 
 # PHP
 alias cfresh="rm -rf vendor/ composer.lock && composer i"
