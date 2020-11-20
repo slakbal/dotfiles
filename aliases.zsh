@@ -23,6 +23,7 @@ alias sivnew="sites && cd akademie2020/"
 # Laravel
 alias a="php artisan"
 alias fresh="php artisan migrate:fresh --seed"
+alias mfs="php artisan migrate:fresh --seed"
 alias cu="composer update"
 alias s="composer fix-style"
 alias t="./vendor/bin/phpunit"
