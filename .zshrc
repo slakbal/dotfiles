@@ -108,6 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source /home/leslie/dotfiles/path.zsh
 source /home/leslie/dotfiles/aliases.zsh
 source /home/leslie/.dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/leslie/.dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
