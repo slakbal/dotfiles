@@ -49,6 +49,7 @@ alias gd="git diff"
 alias resolve="git add . && git commit --no-edit"
 alias gl="git log --oneline --decorate --color"
 alias nuke="git clean -df && git reset --hard"
+alias nah="git clean -df && git reset --hard"
 alias pl="git pull origin"
 
 # Backblaze B2
