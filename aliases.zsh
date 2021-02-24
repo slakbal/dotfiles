@@ -51,6 +51,7 @@ alias gl="git log --oneline --decorate --color"
 alias nuke="git clean -df && git reset --hard"
 alias nah="git clean -df && git reset --hard"
 alias pl="git pull origin"
+alias gmsm="git checkout master && git pull origin && git merge stage"
 
 # Backblaze B2
 alias b2="backblaze-b2"
