@@ -22,6 +22,7 @@ alias sivnew="sites && cd akademie2020/"
 
 # Laravel
 alias a="php artisan"
+alias r="php artisan routeList --compact"
 alias fresh="php artisan migrate:fresh --seed"
 alias mfs="php artisan migrate:fresh --seed"
 alias cu="composer update"
