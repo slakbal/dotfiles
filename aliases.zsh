@@ -31,7 +31,8 @@ alias cu="composer update"
 alias s="composer fix-style"
 # alias t="./vendor/bin/phpunit"
 alias p="./vendor/bin/pest"
-alias t="php artisan test --parallel"
+alias tp="php artisan test --parallel"
+alias t="php artisan test"
 # PHP
 alias cfresh="rm -rf vendor/ composer.lock && composer i"
 
