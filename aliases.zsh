@@ -29,9 +29,9 @@ alias fresh="php artisan migrate:fresh --seed"
 alias mfs="php artisan migrate:fresh --seed"
 alias cu="composer update"
 alias s="composer fix-style"
-alias t="./vendor/bin/phpunit"
+# alias t="./vendor/bin/phpunit"
 alias p="./vendor/bin/pest"
-
+alias t="php artisan test --parallel"
 # PHP
 alias cfresh="rm -rf vendor/ composer.lock && composer i"
 
