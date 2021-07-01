@@ -14,3 +14,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # I've disabled this for now because I only use "ls" which is
 # referenced in my aliases.zsh file directly.
 #export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+
+#Flutter Path
+export PATH="$HOME/Mobile/flutter/bin:$PATH"
