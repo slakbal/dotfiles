@@ -1,6 +1,8 @@
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+# alias l="ls -lF"
+# alias la="ls -lFA"
 
 # Shortcuts - pbcopy is for mac
 alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
@@ -34,8 +36,15 @@ alias s="composer fix-style"
 alias p="./vendor/bin/pest"
 alias tp="php artisan test --parallel"
 alias t="php artisan test"
+
 # PHP
 alias cfresh="rm -rf vendor/ composer.lock && composer i"
+alias phpunit="vendor/bin/phpunit"
+alias dusk="php artisan dusk"
+
+# Misc
+alias hostfile="sudo nano /etc/hosts"
+alias sshconfig="nano ~/.ssh/config"
 
 # JS
 alias nfresh="rm -rf node_modules/ package-lock.json && npm install"
@@ -59,6 +68,11 @@ alias nah="git clean -df && git reset --hard"
 alias pl="git pull origin"
 alias gmsm="git checkout master && git pull origin && git merge stage"
 alias gmds="git checkout stage && git pull origin && git merge dev"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 # Backblaze B2
 alias b2="backblaze-b2"
+
+# IP addresses
+alias publicip="curl https://diagnostic.opendns.com/myip ; echo"
+alias localip="ip addr show | grep -o 'inet \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet? (addr:)? ?/, \"\"); print }'"
