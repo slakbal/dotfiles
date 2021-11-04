@@ -36,6 +36,7 @@ alias s="composer fix-style"
 alias p="./vendor/bin/pest"
 alias tp="php artisan test --parallel"
 alias t="php artisan test"
+alias stan="./vendor/bin/phpstan analyse --memory-limit=2G"
 
 # PHP
 alias cfresh="rm -rf vendor/ composer.lock && composer i"
