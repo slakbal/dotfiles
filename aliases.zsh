@@ -24,7 +24,7 @@ alias sivnew="sites && cd akademie2020/"
 
 # Laravel
 alias a="php artisan"
-alias r="php artisan route:list"
+alias r="php artisan route:pretty"
 alias rcomp="php artisan route:list --compact"
 alias rc="php artisan route:list --columns=method,uri,name,action"
 alias fresh="php artisan migrate:fresh"
@@ -39,7 +39,8 @@ alias t="php artisan test"
 alias stan="./vendor/bin/phpstan analyse --memory-limit=2G"
 
 # PHP
-alias cfresh="rm -rf vendor/ composer.lock && composer i"
+alias credo="composer clear-cache && rm -rf vendor/ composer.lock && composer i"
+alias cfresh="composer clear-cache && rm -rf vendor/ composer.lock && composer i"
 alias phpunit="vendor/bin/phpunit"
 alias dusk="php artisan dusk"
 
