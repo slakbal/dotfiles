@@ -28,6 +28,8 @@ sudo apt install php8.0 -y
 
 sudo apt install php8.0-{common,gd,opcache,cli,bz2,fpm,curl,intl,bcmath,redis,mbstring,zip,mysql,readline,xml,sqlite3,xdebug} php-sqlite3 openssl -y
 
+#https://computingforgeeks.com/how-to-install-php-on-ubuntu-linux-system/
+
 php -v
 
 php -m
