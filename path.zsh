@@ -17,3 +17,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 #Flutter Path
 export PATH="$HOME/Mobile/flutter/bin:$PATH"
+
+#Metabase Path/Port/etc
+export MB_JETTY_PORT=12345
+export PATH="$HOME/home/leslie/metabase:$PATH"

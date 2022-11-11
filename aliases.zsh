@@ -22,6 +22,9 @@ alias sites="cd $HOME/Code"
 alias siv="sites && cd akademie/"
 alias sivnew="sites && cd akademie2020/"
 
+# Metabase
+alias metabase="cd $HOME/metabase && java -jar metabase.jar"
+
 # Laravel
 alias a="php artisan"
 alias r="php artisan route:pretty"
