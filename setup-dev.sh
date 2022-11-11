@@ -1,5 +1,6 @@
 #!/bin/sh
 
+cd ~
 apt update && apt upgrade 
 
 echo "Setup PHP..."
@@ -27,4 +28,5 @@ php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 echo "Install Valet..."
 
+cd ~
 composer global require cpriego/valet-linux
