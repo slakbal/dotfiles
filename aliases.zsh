@@ -43,6 +43,18 @@ alias t="php artisan test"
 alias stan="./vendor/bin/phpstan analyse --memory-limit=2G"
 alias xr="php vendor/chevere/xr/server.php"
 
+# Redis
+alias redis-flush="redis-cli FLUSHALL"
+
+#Multi-Tenant Laravel Commands
+alias tm="composer run-script tenant-migrate"
+alias troutes="composer run-script tenant-routes"
+alias tmfs="composer run-script reset-tenants"
+alias lmfs="composer run-script reset-landlord"
+alias xmfs="composer run-script reset-all"
+alias xbuild="composer run-script build"
+
+
 # PHP
 alias credo="composer clear-cache && rm -rf vendor/ composer.lock && composer i"
 alias cfresh="composer clear-cache && rm -rf vendor/ composer.lock && composer i"
@@ -70,7 +82,7 @@ alias gd="git diff"
 alias gremote="git config --get remote.origin.url"
 alias resolve="git add . && git commit --no-edit"
 alias gl="git log --oneline --decorate --color"
-alias nuke="git clean -df && git reset --hard"
+# alias nuke="git clean -df && git reset --hard"
 alias nah="git clean -df && git reset --hard"
 alias pl="git pull origin"
 alias gmsm="git checkout master && git pull origin && git merge stage"
