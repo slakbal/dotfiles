@@ -23,7 +23,7 @@ alias siv="sites && cd akademie/"
 alias sivnew="sites && cd akademie2020/"
 
 # Metabase
-alias metabase="cd $HOME/metabase && java -jar metabase.jar"
+alias metabase="cd $HOME/Code/metabase && java -jar metabase.jar"
 
 # Laravel
 alias a="php artisan"
@@ -42,6 +42,22 @@ alias tp="php artisan test --parallel"
 alias t="php artisan test"
 alias stan="./vendor/bin/phpstan analyse --memory-limit=2G"
 alias xr="php vendor/chevere/xr/server.php"
+
+# Laravel Sail
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+alias shell="sail shell"
+alias sa="sail artisan"
+alias sr="sail route:pretty"
+alias srcomp="sail route:list --compact"
+alias src="sail route:list --columns=method,uri,name,action"
+alias sfresh="sail migrate:fresh"
+alias smf="sail migrate:fresh"
+alias smfs="sail migrate:fresh --seed"
+alias stp="sail test --parallel"
+alias st="sail test"
+alias scu="sail composer update"
+alias sformat="sail composer format"
+alias spest="sail composer pest"
 
 # Redis
 alias redis-flush="redis-cli FLUSHALL"
