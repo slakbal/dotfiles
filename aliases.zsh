@@ -42,6 +42,7 @@ alias tp="php artisan test --parallel"
 alias t="php artisan test"
 alias stan="./vendor/bin/phpstan analyse --memory-limit=2G"
 alias xr="php vendor/chevere/xr/server.php"
+alias pint="./vendor/bin/pint"
 
 # Laravel Sail
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
